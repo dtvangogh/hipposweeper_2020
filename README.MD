@@ -53,11 +53,13 @@ This repository contains the following files:
 ### Usage and Installation
 Clone the repository, compile with compilation flags, listed below, then run the executable.
 ```
-$ git clone https://github.com/dtvangogh/hipposweeper
+$ git clone https://github.com/dtvangogh/hipposweeper_2020
 ```
-For username enter your own username. Find this line at the last line of the sweep.py file
+For username enter your own username. Find this line at line 38 of the sweep.py file. Put your password in password_file.py
 ```
-InstaBot('1661@holbertonschool.com', password)
+"""Login Information"""
+username = '1661@holbertonschool.com'
+password = pw
 ```
 ### Compilation
 This code was compiled this way:
