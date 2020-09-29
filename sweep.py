@@ -7,6 +7,7 @@ import io
 import re
 import os.path, sys, stat
 import sys
+from password_file import pw
 
 
 if len(sys.argv) < 2 or "help " in sys.argv[1]:
@@ -35,8 +36,8 @@ print('\n')
 project_number = sys.argv[1]
 
 """Login Information"""
-username = 'enter username'
-password = 'enter password'
+username = '1661@holbertonschool.com'
+password = pw
 
 if ("http" not in project_number):
     project_number = ('https://intranet.hbtn.io/projects/' + project_number)
@@ -235,6 +236,12 @@ except IndexError:
         h.write(item)
         h.write('\n')
     h.write("#endif\n")
+print('\n')
+print('GOOD LUCK WITH YOUR PROJECT')
+print('\n')
+
+print(directory_path)
+
 
 
 #print(question_description)
