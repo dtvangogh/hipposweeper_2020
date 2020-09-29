@@ -35,10 +35,10 @@ dtvan@dtvangogh:0x04-more_functions_nested_loops$
 ```
 ./install.sh
 ```
-sudo apt-get install pip
-sudo pip install beautifulsoup4
-sudo pip install lxml
-sudo pip install requests
+sudo apt-get install pip\
+sudo pip install beautifulsoup4\
+sudo pip install lxml\
+sudo pip install requests\
 ```
 ```
 
