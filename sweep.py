@@ -35,8 +35,8 @@ print('\n')
 project_number = sys.argv[1]
 
 """Login Information"""
-username = 'PUT YOUR FULL EMAIL HERE'
-password = 'PUT YOUR PASSWORD HERE'
+username = '1661@holbertonschool.com'
+password = 'Logosornogos2019'
 
 if ("http" not in project_number):
     project_number = ('https://intranet.hbtn.io/projects/' + project_number)
@@ -130,7 +130,7 @@ for question_block in soup.find_all('div', class_='clearfix gap'):
                     x = x.replace('*', '')
                 if ',' in x:
                     x = x.replace(',', '')
-                print(x)
+#print(x) come back to work on variable array
             if ',' in variable:
                 variable_one = variable[variable.find(' ') + 1:variable.find(',')]
                 variable_two = variable[variable.find(',') + 2:]
@@ -158,76 +158,76 @@ for question_block in soup.find_all('div', class_='clearfix gap'):
     twenty_spaces = '                    '
     single_space = ' '
     old_file_symbol = ' ~ '
-    if sys.argv[2]:
-        if run_once is 0:
-            print("--------------------------------------------------------------------------------------------")
-            print("Project files created:")
-            print('--------------------------------------------------------------------------------------------')
-            run_once = 1 
+    if run_once is 0:
+        print("--------------------------------------------------------------------------------------------")
+        print("Project files created:")
+        print('--------------------------------------------------------------------------------------------')
+        run_once = 1
 
 ## CREATE PROJECT FILES
-        f = open(file_name, "w")
-        if (".py" in file_name):
-            f.write("#!/usr/bin/python3\n")
-        elif (".sh" in file_name):
-            f.write("#!/bin/bash\n")
-        elif (".c" in file_name):
-            f.write("#include \"stdio.h\"\n#include \"stdarg.h\"\n#include \"string.h\"\n#include \"stdlib.h\"\n#include \"holberton.h\"\n")
-            f.write("/**\n*{} - {}\n".format(comment_prototype, question_description))
-            if "," in prototype:
-                f.write("*@{}: a variable\n*@{}: a variable\n".format(variable_one, variable_two))
-                try:
-                    f.write("@{}: a variable\n".format(variable_three))
-                except NameError:
-                    pass
-                f.write("*Return: 0\n")
-                f.write('**/\n\n')
-                f.write('{}\n'.format(prototype[:-1]))
-                f.write('{\n\n}\n')
-            else:
-                f.write("*@{}: a variable\n".format(variable_one))
-                f.write("*Return: 0\n")
-                f.write('**/\n\n')
-                f.write('{}\n'.format(prototype[:-1]))
-                f.write('{\n\n}\n')
+    f = open(file_name, "w")
+    if (".py" in file_name):
+        f.write("#!/usr/bin/python3\n")
+    elif (".sh" in file_name):
+        f.write("#!/bin/bash\n")
+    elif (".c" in file_name):
+        f.write("#include \"stdio.h\"\n#include \"stdarg.h\"\n#include \"string.h\"\n#include \"stdlib.h\"\n#include \"holberton.h\"\n")
+        f.write("/**\n*{} - {}\n".format(comment_prototype, question_description))
+        if "," in prototype:
+            f.write("*@{}: a variable\n*@{}: a variable\n".format(variable_one, variable_two))
+            try:
+                f.write("@{}: a variable\n".format(variable_three))
+            except NameError:
+                pass
+            f.write("*Return: 0\n")
+            f.write('**/\n\n')
+            f.write('{}\n'.format(prototype[:-1]))
+            f.write('{\n\n}\n')
+        else:
+            f.write("*@{}: a variable\n".format(variable_one))
+            f.write("*Return: 0\n")
+            f.write('**/\n\n')
+            f.write('{}\n'.format(prototype[:-1]))
+            f.write('{\n\n}\n')
 
 
-        f.close()
+    f.close()
 ## CREATE MAIN FILES
-        m = open(main_file_name, "w")
-        m.write(main_file)
-        m.close()
+    m = open(main_file_name, "w")
+    m.write(main_file)
+    m.close()
 ## CREATE README 
-        r = open('README.MD', "w")
-        r.write('README')
+    r = open('README.MD', "w")
+    r.write('README')
 ##PRINT FILES CREATED
-        try:
-            if len(file_name + twenty_spaces)  < 36:
-                i = 0
-                difference = 36 - len(file_name + twenty_spaces + single_space)
-                while i < difference:
-                    twenty_spaces += single_space
-                    i += 1
-            
-            if len(file_name + twenty_spaces) > 36:
-                i = 0
-                difference = len(file_name + twenty_spaces + single_space) - 36
-                twenty_spaces = twenty_spaces[difference:0] 
-            else:
-                print(file_name, twenty_spaces, main_file_name)
-        except NameError:
+    try:
+        if len(file_name + twenty_spaces)  < 36:
+            i = 0
+            difference = 36 - len(file_name + twenty_spaces + single_space)
+            while i < difference:
+                twenty_spaces += single_space
+                i += 1
+        
+        if len(file_name + twenty_spaces) > 36:
+            i = 0
+            difference = len(file_name + twenty_spaces + single_space) - 36
+            twenty_spaces = twenty_spaces[difference:0] 
+        else:
             print(file_name, twenty_spaces, main_file_name)
-    temp_file_name = file_name
+    except NameError:
+        print(file_name, twenty_spaces, main_file_name)
+temp_file_name = file_name
 ## CREATE HOLBERTON.H
-if sys.argv[2]:
-    h = open(sys.argv[2], "w")
-    h.write("#ifndef HOLBERTON_H\n#define HOLBERTON_H")
-    print("header file: {}".format(sys.argv[2]))
-    for item in prototype_array:
-        h.write(item)
-        h.write('\n')
-    h.write("#endif\n")
-else:
+try:
+    if sys.argv[2]:
+        h = open(sys.argv[2], "w")
+        h.write("#ifndef HOLBERTON_H\n#define HOLBERTON_H")
+        print("header file: {}".format(sys.argv[2]))
+        for item in prototype_array:
+            h.write(item)
+            h.write('\n')
+        h.write("#endif\n")
+except IndexError:
     h = open('holberton.h', "w")
     print("created holberton.h")
     h.write("#ifndef HOLBERTON_H\n#define HOLBERTON_H")
