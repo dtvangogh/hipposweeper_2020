@@ -1,9 +1,3 @@
-usage: python3 sweep.py project number
-example: python3 sweep.py 217
-
-
-you need to install some things first \
-
 ## HIPPOSWEEPER
 ### Description
 A python script that creates repositories, directories, project files, and main.c/main.py files, and very pretty README files (README creation will be released in a few days)
