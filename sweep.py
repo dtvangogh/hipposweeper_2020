@@ -35,8 +35,8 @@ print('\n')
 project_number = sys.argv[1]
 
 """Login Information"""
-username = '1661@holbertonschool.com'
-password = 'Logosornogos2019'
+username = 'enter username'
+password = 'enter password'
 
 if ("http" not in project_number):
     project_number = ('https://intranet.hbtn.io/projects/' + project_number)
