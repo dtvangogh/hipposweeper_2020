@@ -38,7 +38,7 @@ dtvan@dtvangogh:0x04-more_functions_nested_loops$
 sudo apt-get install pip\
 sudo pip install beautifulsoup4\
 sudo pip install lxml\
-sudo pip install requests\
+sudo pip install requests	
 ```
 ```
 
