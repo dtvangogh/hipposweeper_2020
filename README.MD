@@ -5,7 +5,7 @@ git clone https://github.com/dtvangogh/hipposweeper_2020
 cd hipposweeper_2020
 ./install.sh
 ```
-include your password in the password_file and add your username on line 38 of sweep.py
+include your password in the password_file and add your username on line 38 of sweep.py \
 To run:
 ```
 python3 sweep.py 217
@@ -47,6 +47,7 @@ dtvan@dtvangogh:0x04-more_functions_nested_loops$
 ```
 ./install.sh
 ```
+sudo apt-get install python3.7\
 sudo apt-get install pip\
 sudo pip install beautifulsoup4\
 sudo pip install lxml\
