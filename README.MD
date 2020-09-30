@@ -29,17 +29,23 @@ dtvan@dtvangogh:0x04-more_functions_nested_loops$ ls
 101-print_number.c     6-main.c
 12-main.c              6-print_line.c
 dtvan@dtvangogh:0x04-more_functions_nested_loops$ cat 10-print_triangle.c
-#include holberton.h
+#include "stdio.h"
+#include "stdarg.h"
+#include "string.h"
+#include "stdlib.h"
+#include "holberton.h"
 
 /**
-*print_triangle-
-*
-*
-*
-*Return:
+**_strcat - Write a function that concatenates two strings.
+*@dest: a variable
+*@src: a variable
+*Return: 0
 **/
 
-void print_triangle(int size);
+char *_strcat(char *dest, char *src)
+{
+
+}
 dtvan@dtvangogh:0x04-more_functions_nested_loops$
 ```
 
