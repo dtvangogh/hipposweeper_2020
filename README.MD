@@ -1,4 +1,16 @@
 ## HIPPOSWEEPER
+### Get Started
+```
+git clone https://github.com/dtvangogh/hipposweeper_2020
+cd hipposweeper_2020
+./install.sh
+```
+include your password in the password_file and add your username on line 38 of sweep.py
+To run:
+```
+python3 sweep.py 217
+```
+
 ### Description
 A python script that creates repositories, directories, project files, and main.c/main.py files, and very pretty README files (README creation will be released in a few days)
 This script doesn't just create files...it fills the file with an include header line, comment bullets, and the prototype.
