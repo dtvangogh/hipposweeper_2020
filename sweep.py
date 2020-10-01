@@ -85,6 +85,7 @@ os.chdir(directory_path)
 print("cd into {:s}".format(directory_path))
 
 run_once = 0
+file_and_main_array = []
 
 for question_block in soup.find_all('div', class_='clearfix gap'):
     question_description = question_block.p.text
@@ -154,7 +155,6 @@ for question_block in soup.find_all('div', class_='clearfix gap'):
                     variable_one = variable_one[1:]
 #print(prototype_array)
 #print(prototype)
-#print(file_name)
     ##MAKE FILES
     twenty_spaces = '                    '
     single_space = ' '
@@ -190,31 +190,54 @@ for question_block in soup.find_all('div', class_='clearfix gap'):
             f.write('**/\n\n')
             f.write('{}\n'.format(prototype[:-1]))
             f.write('{\n\n}\n')
+    else:
+        f.write(" ")
+        
 
 
     f.close()
 ## CREATE MAIN FILES
-    m = open(main_file_name, "w")
-    m.write(main_file)
-    m.close()
+    try:
+        m = open(main_file_name, "w")
+        m.write(main_file)
+        m.close()
+    except NameError:
+        pass
 ## CREATE README 
-    r = open('README.MD', "w")
+    r = open('README.md', "w")
     r.write('README')
 ##PRINT FILES CREATED
     try:
+        
+        twenty_spaces = '                    '
+        single_space = ' '
         if len(file_name + twenty_spaces)  < 36:
             i = 0
             difference = 36 - len(file_name + twenty_spaces + single_space)
             while i < difference:
                 twenty_spaces += single_space
                 i += 1
+            file_and_main = file_name + twenty_spaces + main_file_name
+            file_and_main_array.append(file_and_main)
         
-        if len(file_name + twenty_spaces) > 36:
+        if len(file_name + twenty_spaces) > 36 or len(file_name + twenty_spaces) is 36:
             i = 0
-            difference = len(file_name + twenty_spaces + single_space) - 36
-            twenty_spaces = twenty_spaces[difference:0] 
+            difference = 22 - len(filename)
+            while i < difference:
+                single_space += single_space 
+                i += 1
+            file_and_main = file_name + single_space + main_file_name
+            file_and_main_array.append(file_and_main)
+        
         else:
-            print(file_name, twenty_spaces, main_file_name)
+            if len(filename) > 16:
+                print(file_name, single_spaces, main_file_name)
+            else:
+                print(file_name, twenty_spaces, main_file_name)
+            file_and_main = file_name + single_space + main_file_name
+            file_and_main_array.append(file_and_main)
+        
+        
     except NameError:
         print(file_name, twenty_spaces, main_file_name)
 temp_file_name = file_name
@@ -229,19 +252,23 @@ try:
             h.write('\n')
         h.write("#endif\n")
 except IndexError:
-    h = open('holberton.h', "w")
-    print("created holberton.h")
-    h.write("#ifndef HOLBERTON_H\n#define HOLBERTON_H")
-    for item in prototype_array:
-        h.write(item)
-        h.write('\n')
-    h.write("#endif\n")
+    if "low" in repo_name:
+        h = open('holberton.h', "w")
+        print("created holberton.h")
+        h.write("#ifndef HOLBERTON_H\n#define HOLBERTON_H")
+        for item in prototype_array:
+            h.write(item)
+            h.write('\n')
+        h.write("#endif\n")
+    else:
+        pass
 print('\n')
 print('GOOD LUCK WITH YOUR PROJECT')
 print('\n')
 
 print(directory_path)
-
+for item in file_and_main_array:
+    print(item)
 
 
 #print(question_description)
