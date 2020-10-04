@@ -86,6 +86,8 @@ print("cd into {:s}".format(directory_path))
 
 run_once = 0
 file_and_main_array = []
+file_name_array = []
+main_file_array = []
 
 for question_block in soup.find_all('div', class_='clearfix gap'):
     question_description = question_block.p.text
@@ -160,87 +162,107 @@ for question_block in soup.find_all('div', class_='clearfix gap'):
     single_space = ' '
     old_file_symbol = ' ~ '
     if run_once is 0:
-        print("--------------------------------------------------------------------------------------------")
+        print("--------------------------------------------------------------------------------------")
         print("Project files created:")
-        print('--------------------------------------------------------------------------------------------')
+        print('--------------------------------------------------------------------------------------')
         run_once = 1
 
 ## CREATE PROJECT FILES
-    f = open(file_name, "w")
-    if (".py" in file_name):
-        f.write("#!/usr/bin/python3\n")
-    elif (".sh" in file_name):
-        f.write("#!/bin/bash\n")
-    elif (".c" in file_name):
-        f.write("#include \"stdio.h\"\n#include \"stdarg.h\"\n#include \"string.h\"\n#include \"stdlib.h\"\n#include \"holberton.h\"\n")
-        f.write("/**\n*{} - {}\n".format(comment_prototype, question_description))
-        if "," in prototype:
-            f.write("*@{}: a variable\n*@{}: a variable\n".format(variable_one, variable_two))
-            try:
-                f.write("@{}: a variable\n".format(variable_three))
-            except NameError:
-                pass
-            f.write("*Return: 0\n")
-            f.write('**/\n\n')
-            f.write('{}\n'.format(prototype[:-1]))
-            f.write('{\n\n}\n')
+    try:
+        f = open(file_name, "w")
+        file_name_array.append(file_name)
+        if (".py" in file_name):
+            f.write("#!/usr/bin/python3\n")
+        elif (".sh" in file_name):
+            f.write("#!/bin/bash\n")
+        elif (".c" in file_name):
+            f.write("#include \"stdio.h\"\n#include \"stdarg.h\"\n#include \"string.h\"\n#include \"stdlib.h\"\n#include \"holberton.h\"\n")
+            f.write("/**\n*{} - {}\n".format(comment_prototype, question_description))
+            if "," in prototype:
+                f.write("*@{}: a variable\n*@{}: a variable\n".format(variable_one, variable_two))
+                try:
+                    f.write("@{}: a variable\n".format(variable_three))
+                except NameError:
+                    pass
+                f.write("*Return: 0\n")
+                f.write('**/\n\n')
+                f.write('{}\n'.format(prototype[:-1]))
+                f.write('{\n\n}\n')
+            else:
+                f.write("*@{}: a variable\n".format(variable_one))
+                f.write("*Return: 0\n")
+                f.write('**/\n\n')
+                f.write('{}\n'.format(prototype[:-1]))
+                f.write('{\n\n}\n')
         else:
-            f.write("*@{}: a variable\n".format(variable_one))
-            f.write("*Return: 0\n")
-            f.write('**/\n\n')
-            f.write('{}\n'.format(prototype[:-1]))
-            f.write('{\n\n}\n')
-    else:
-        f.write(" ")
-        
+            f.write(" ")
+        f.close()
+    except NameError:
+        file_name = 'None'
+        file_name_array.append(file_name)
+            
 
 
-    f.close()
 ## CREATE MAIN FILES
     try:
         m = open(main_file_name, "w")
+        main_file_array.append(main_file_name)
         m.write(main_file)
         m.close()
     except NameError:
-        pass
+        main_file_name = 'None'
+        main_file_array.append(main_file_name)
 ## CREATE README 
     r = open('README.md', "w")
     r.write('README')
-##PRINT FILES CREATED
-    try:
-        
-        twenty_spaces = '                    '
-        single_space = ' '
-        if len(file_name + twenty_spaces)  < 36:
-            i = 0
-            difference = 36 - len(file_name + twenty_spaces + single_space)
-            while i < difference:
-                twenty_spaces += single_space
-                i += 1
-            file_and_main = file_name + twenty_spaces + main_file_name
-            file_and_main_array.append(file_and_main)
-        
-        if len(file_name + twenty_spaces) > 36 or len(file_name + twenty_spaces) is 36:
-            i = 0
-            difference = 22 - len(filename)
-            while i < difference:
-                single_space += single_space 
-                i += 1
-            file_and_main = file_name + single_space + main_file_name
-            file_and_main_array.append(file_and_main)
-        
-        else:
-            if len(filename) > 16:
-                print(file_name, single_spaces, main_file_name)
-            else:
-                print(file_name, twenty_spaces, main_file_name)
-            file_and_main = file_name + single_space + main_file_name
-            file_and_main_array.append(file_and_main)
-        
-        
-    except NameError:
-        print(file_name, twenty_spaces, main_file_name)
+####PRINT FILES CREATED
+#    try:
+#        
+#        twenty_spaces = '                    '
+#        single_space = ' '
+#        if len(file_name + twenty_spaces)  < 36:
+#            i = 0
+#            difference = 36 - len(file_name + twenty_spaces + single_space)
+#            while i < difference:
+#                twenty_spaces += single_space
+#                i += 1
+#            file_and_main = file_name + twenty_spaces + main_file_name
+#            file_and_main_array.append(file_and_main)
+#        
+#        if len(file_name + twenty_spaces) > 36 or len(file_name + twenty_spaces) is 36:
+#            i = 0
+#            difference = 22 - len(filename)
+#            while i < difference:
+#                single_space += single_space 
+#                i += 1
+#            file_and_main = file_name + single_space + main_file_name
+#            file_and_main_array.append(file_and_main)
+#        
+#        else:
+#            if len(filename) > 16:
+#                print(file_name, single_spaces, main_file_name)
+#            else:
+#                print(file_name, twenty_spaces, main_file_name)
+#            file_and_main = file_name + single_space + main_file_name
+#            file_and_main_array.append(file_and_main)
+#        
+#        
+#    except NameError:
+#        try:   
+#            print(file_name, twenty_spaces, main_file_name)
+#        except NameError:
+#            pass
 temp_file_name = file_name
+
+fmt = '{:<12}{:<25}{}'
+
+print(fmt.format('Question #', 'Project File', 'Main File'))
+for i, (name, grade) in enumerate(zip(file_name_array, main_file_array)):
+    print(fmt.format(i, name, grade))
+print('--------------------------------------------------------------------------------------')
+
+#for item in file_name_array:
+#    print(item)
 ## CREATE HOLBERTON.H
 try:
     if sys.argv[2]:
@@ -262,6 +284,8 @@ except IndexError:
         h.write("#endif\n")
     else:
         pass
+print('--------------------------------------------------------------------------------------')
+
 print('\n')
 print('GOOD LUCK WITH YOUR PROJECT')
 print('\n')
