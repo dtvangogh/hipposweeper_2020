@@ -10,6 +10,11 @@ import sys
 from password_file import pw
 
 
+try:
+    if sys.argv[2]:
+        header_file_name = sys.argv[2]
+except IndexError:
+    header_file_name = 'holberton.h'
 if len(sys.argv) < 2 or "help " in sys.argv[1]:
     print("")
     print("USAGE: python3 sweep.py project_number")
@@ -184,7 +189,7 @@ for question_block in soup.find_all('div', class_='clearfix gap'):
         elif (".sh" in file_name):
             f.write("#!/bin/bash\n")
         elif (".c" in file_name):
-            f.write("#include \"stdio.h\"\n#include \"stdarg.h\"\n#include \"string.h\"\n#include \"stdlib.h\"\n#include \"holberton.h\"\n")
+            f.write("#include \"stdio.h\"\n#include \"stdarg.h\"\n#include \"string.h\"\n#include \"stdlib.h\"\n#include \"{}\"\n".format(header_file_name))
             f.write("/**\n*{} - {}\n".format(comment_prototype, question_description))
             if "," in prototype:
                 f.write("*@{}: a variable\n*@{}: a variable\n".format(variable_one, variable_two))
@@ -237,8 +242,8 @@ try:
         h.write("#endif\n")
 except IndexError:
     if "low" in repo_name:
-        h = open('holberton.h', "w")
-        print("created holberton.h")
+        h = open(header_file_name, "w")
+        print("created {}".format(header_file_name))
         h.write("#ifndef HOLBERTON_H\n#define HOLBERTON_H")
         for item in prototype_array:
             h.write(item)
