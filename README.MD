@@ -15,38 +15,43 @@ python3 vagrant_sweep.py 217
 A python script that creates repositories, directories, project files, and main.c/main.py files, and very pretty README files (README creation will be released in a few days)
 This script doesn't just create files...it fills the file with an include header line, comment bullets, and the prototype.
 
-Example:
+###Example Usage
 ```
-dtvan@dtvangogh:0x04-more_functions_nested_loops$ ls
-0                      2-main.c               7-main.c
-0-isupper.c            2-mul.c                7-print_diagonal.c
-0-main.c               3-main.c               8-main.c
-1-isdigit.c            3-print_numbers.c      8-print_square.c
-1-main.c               4-main.c               9-fizz_buzz.c
-10-main.c              4-print_most_numbers.c 9-main.c
-10-print_triangle.c    5-main.c               README.md
-100-prime_factor.c     5-more_numbers.c       holberton.h
-101-print_number.c     6-main.c
-12-main.c              6-print_line.c
-dtvan@dtvangogh:0x04-more_functions_nested_loops$ cat 10-print_triangle.c
-#include "stdio.h"
-#include "stdarg.h"
-#include "string.h"
-#include "stdlib.h"
-#include "holberton.h"
+$ python3 vagrant_sweep.py 217
 
-/**
-**_strcat - Write a function that concatenates two strings.
-*@dest: a variable
-*@src: a variable
-*Return: 0
-**/
 
-char *_strcat(char *dest, char *src)
-{
+Welcome to the HippoSweeper, Holberton's #1 Project Creator
 
-}
-dtvan@dtvangogh:0x04-more_functions_nested_loops$
+
+Logging into user '1661@holbertonschool.com'
+You have selected https://intranet.hbtn.io/projects/217
+0x06-pointers_arrays_strings
+Creating: /Users/qpv2/holbertonschool-low_level_programming/0x06-pointers_arrays_strings
+cd into /Users/qpv2/holbertonschool-low_level_programming/0x06-pointers_arrays_strings
+--------------------------------------------------------------------------------------
+Project files created:
+--------------------------------------------------------------------------------------
+Question #  Project File             Main File
+0           0-strcat.c               0-main.c
+1           1-strncat.c              1-main.c
+2           2-strncpy.c              2-main.c
+3           3-strcmp.c               3-main.c
+4           4-rev_array.c            4-main.c
+5           5-string_toupper.c       5-main.c
+6           6-cap_string.c           6-main.c
+7           7-leet.c                 7-main.c
+8           8-rot13.c                8-main.c
+9           100-print_number.c       100-main.c
+10          101-magic.c              100-main.c
+11          102-infinite_add.c       102-main.c
+12          103-print_buffer.c       103-main.c
+--------------------------------------------------------------------------------------
+created holberton.h
+created README.md
+--------------------------------------------------------------------------------------
+
+
+GOOD LUCK WITH YOUR PROJECT
 ```
 
 ### Prerequisites
@@ -87,49 +92,6 @@ This code was compiled this way:
 1st Argument will choice what project you want. Project number is in the URL. Always a 3 digit number
 ` $ python3 sweep.py 243 2nd_argument `
 2nd argument will control the name of your header file, some projects have different header file names
-
-
-###### Example usage
-
-```
-dtvan@dtvangogh:SWEEPER$ python3 sweep.py 241
-
-
-Welcome to the HippoSweeper, Holberton's #1 Project Creator
-
-
-You have selected "intranet.hbtn.io/projects/241"
-0x03-python-data_structures
-cd into /users/qpv2/holbertonschool-higher_level_programming/0x03-python-data_structures
-Project files created:
-
-
-0-print_list_integer.py
-1-element_at.py
-2-replace_in_list.py
-3-print_reversed_list_integer.py
-4-new_in_list.py
-5-no_c.py
-6-print_matrix_integer.py
-7-add_tuple.py
-8-multiple_returns.py
-9-max_integer.py
-10-divisible_by_2.py
-11-delete_at.py
-12-switch.py
-100-print_python_list_info.c
-13-is_palindrome.c, lists.h
-
-
-15 main.py files created
-
-
-GOOD LUCK WITH YOUR PROJECT
-
-
-/users/qpv2/holbertonschool-higher_level_programming/0x03-python-data_structures
-```
-
 
 
 ### Authors
