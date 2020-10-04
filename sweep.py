@@ -62,7 +62,7 @@ else:
 
 
 url="https://intranet.hbtn.io/projects/305"
-soup = BeautifulSoup(page.content, 'lxml')
+soup = BeautifulSoup(page.content, 'html5lib')
 prototype_array = []
 
 for item in soup.find_all('li'):
@@ -89,9 +89,19 @@ run_once = 0
 file_and_main_array = []
 file_name_array = []
 main_file_array = []
+project_title = soup.find('h1', class_='gap')
+project_title = project_title.text
+## CREATE README
+r = open('README.md', "w")
+r.write("# {}\n## Description\n This project is part of {}:\n## Project tasks :wrench:\n".format(project_title, repo_name))
 
 for question_block in soup.find_all('div', class_='clearfix gap'):
     question_description = question_block.p.text
+    question_title = question_block.find('h4', class_='task')
+    question_title = question_title.text
+    question_title = question_title[question_title.find('\n') + 1:]
+    question_title = question_title[4:question_title.find('\n'):]
+    print(question_title)
 ## MAIN FILE NAME AND MAIN FILE CODE FETCH
     for pre in question_block.find_all('pre'):
         code_block = pre.code.text
@@ -107,9 +117,6 @@ for question_block in soup.find_all('div', class_='clearfix gap'):
         if 'cat ' not in code_block:
             main_file_name = 'none'
         
-        
-#print(main_file)
-
 ## FETCH FILE NAME, PROTOTYPE
     for li_block in question_block.find_all('li'):
         li_block = li_block.text
@@ -156,8 +163,12 @@ for question_block in soup.find_all('div', class_='clearfix gap'):
                 variable_one = variable[variable.find(' ') + 1:]
                 if variable_one[0] is '*':
                     variable_one = variable_one[1:]
-#print(prototype_array)
-#print(prototype)
+ ##ADD TO README
+    r = open('README.md', "a")
+    try:
+        r.write("### [{}](./{}) \n* {}\n".format(question_title, file_name, question_description))
+    except NameError:
+        pass
     ##MAKE FILES
     twenty_spaces = '                    '
     single_space = ' '
@@ -167,7 +178,6 @@ for question_block in soup.find_all('div', class_='clearfix gap'):
         print("Project files created:")
         print('--------------------------------------------------------------------------------------')
         run_once = 1
-
 ## CREATE PROJECT FILES
     try:
         f = open(file_name, "w")
@@ -201,9 +211,6 @@ for question_block in soup.find_all('div', class_='clearfix gap'):
     except NameError:
         file_name = 'None'
         file_name_array.append(file_name)
-            
-
-
 ## CREATE MAIN FILES
     try:
         m = open(main_file_name, "w")
@@ -213,48 +220,7 @@ for question_block in soup.find_all('div', class_='clearfix gap'):
     except NameError:
         main_file_name = 'None'
         main_file_array.append(main_file_name)
-## CREATE README 
-    r = open('README.md', "w")
-    r.write('README')
-####PRINT FILES CREATED
-#    try:
-#        
-#        twenty_spaces = '                    '
-#        single_space = ' '
-#        if len(file_name + twenty_spaces)  < 36:
-#            i = 0
-#            difference = 36 - len(file_name + twenty_spaces + single_space)
-#            while i < difference:
-#                twenty_spaces += single_space
-#                i += 1
-#            file_and_main = file_name + twenty_spaces + main_file_name
-#            file_and_main_array.append(file_and_main)
-#        
-#        if len(file_name + twenty_spaces) > 36 or len(file_name + twenty_spaces) is 36:
-#            i = 0
-#            difference = 22 - len(filename)
-#            while i < difference:
-#                single_space += single_space 
-#                i += 1
-#            file_and_main = file_name + single_space + main_file_name
-#            file_and_main_array.append(file_and_main)
-#        
-#        else:
-#            if len(filename) > 16:
-#                print(file_name, single_spaces, main_file_name)
-#            else:
-#                print(file_name, twenty_spaces, main_file_name)
-#            file_and_main = file_name + single_space + main_file_name
-#            file_and_main_array.append(file_and_main)
-#        
-#        
-#    except NameError:
-#        try:   
-#            print(file_name, twenty_spaces, main_file_name)
-#        except NameError:
-#            pass
-temp_file_name = file_name
-
+##PRINT FILES CREATED
 fmt = '{:<12}{:<25}{}'
 
 print(fmt.format('Question #', 'Project File', 'Main File'))
@@ -262,8 +228,6 @@ for i, (name, grade) in enumerate(zip(file_name_array, main_file_array)):
     print(fmt.format(i, name, grade))
 print('--------------------------------------------------------------------------------------')
 
-#for item in file_name_array:
-#    print(item)
 ## CREATE HOLBERTON.H
 try:
     if sys.argv[2]:
@@ -285,6 +249,8 @@ except IndexError:
         h.write("#endif\n")
     else:
         pass
+## ONLY PRINT IF README EXISTS
+print('created README.md')
 print('--------------------------------------------------------------------------------------')
 
 print('\n')
@@ -292,11 +258,9 @@ print('GOOD LUCK WITH YOUR PROJECT')
 print('\n')
 
 print(directory_path)
-for item in file_and_main_array:
-    print(item)
+
+r = open('README.md', "a")
+r.write("## Author\n* **DT Van** - [Dtvangogh](https://github.com/dtvangogh)\n")
 
 
-#print(question_description)
-##match = soup.find('h4', class_='task')
-##print(match.text) title of task for readme
 
