@@ -76,7 +76,8 @@ for item in soup.find_all('li'):
 print('You have selected {}'.format(project_number))
 print(directory_name)
     #MAKE DIRECTORY: 0\n"
-directory_path = '/users/qpv2/' + repo_name + '/' + directory_name
+home = os.getenv("HOME")
+directory_path = home + '/' + repo_name + '/' + directory_name
 if not os.path.exists(directory_path):
     os.makedirs(directory_path)
     print("Creating: {:s}".format(directory_path))
