@@ -8,7 +8,7 @@ cd hipposweeper_2020
 include your password in the password_file and add your username on line 38 of sweep.py \
 To run:
 ```
-python3 sweep.py 217
+python3 vagrant_sweep.py 217  
 ```
 
 ### Description
