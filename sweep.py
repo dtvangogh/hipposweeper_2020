@@ -12,8 +12,8 @@ from password_file import pw
 
 if len(sys.argv) < 2 or "help " in sys.argv[1]:
     print("")
-    print("USAGE: intranet (Project Number or Project URL)")
-    print("Ex. intranet https://intranet.hbtn.io/projects/243")
+    print("USAGE: python3 sweep.py project_number")
+    print("Example: python3 sweep.py 218")
     print("")
     sys.exit(1)
 
@@ -60,8 +60,6 @@ else:
     print("Check your username, password and your project URL.")
     sys.exit(1)
 
-
-url="https://intranet.hbtn.io/projects/305"
 soup = BeautifulSoup(page.content, 'html5lib')
 prototype_array = []
 
@@ -101,7 +99,6 @@ for question_block in soup.find_all('div', class_='clearfix gap'):
     question_title = question_title.text
     question_title = question_title[question_title.find('\n') + 1:]
     question_title = question_title[4:question_title.find('\n'):]
-    print(question_title)
 ## MAIN FILE NAME AND MAIN FILE CODE FETCH
     for pre in question_block.find_all('pre'):
         code_block = pre.code.text
