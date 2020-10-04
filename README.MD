@@ -15,7 +15,7 @@ python3 vagrant_sweep.py 217
 A python script that creates repositories, directories, project files, and main.c/main.py files, and very pretty README files (README creation will be released in a few days)
 This script doesn't just create files...it fills the file with an include header line, comment bullets, and the prototype.
 
-###Example Usage
+### Example Usage
 ```
 $ python3 vagrant_sweep.py 217
 
